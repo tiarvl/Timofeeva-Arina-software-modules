@@ -71,7 +71,7 @@ internal class Program
         Console.WriteLine($"P ={P}");
     }
 }
-}
+
 
 
 namespace КПМ
