@@ -1,0 +1,100 @@
+Код1:
+                Console.WriteLine("Введите число");
+                int number = int.Parse(Console.ReadLine());
+                int count = 0;
+                do
+                {
+                    number /= 10;
+                    count++;
+                }
+                while (number > 0);
+                Console.WriteLine("Количество цифр:" + count);
+Код2:
+    static void Main(string[] args)
+    {
+        string answer;
+        do
+        {
+            Console.WriteLine("Привет");
+            Console.Write("Повторить? (да/нет): ");
+            answer = Console.ReadLine();
+            if (answer == null)
+            {
+                Console.WriteLine("Ввод завершён");
+                return;
+            }
+        }
+        while (string.Equals(answer.Trim(), "да", StringComparison.OrdinalIgnoreCase));
+        Console.WriteLine("Пока.");
+Код3:
+static void Main(string[] args)
+ {
+         string answer;
+         do
+         {
+             int number;
+             bool valid;
+             do
+             {
+                 Console.Write("Введите целое число от -1000 до 1000: ");
+                 string input = Console.ReadLine();
+                 if (input == null)
+                 {
+                     Console.WriteLine("Ввод завершён");
+                     return;
+                 }
+                 valid = int.TryParse(input, out number)
+                 && number >= -1000 && number <= 1000;
+                 if (!valid)
+                     Console.WriteLine("Нужно целое число от -1000 до 1000.");
+             }
+             while (!valid);
+             long square = (long)number * number; // long — защита от переполнения
+             Console.WriteLine($"Квадрат {number} = {square}");
+             Console.Write("Ещё? д/н: ");
+             answer = Console.ReadLine();
+             if (answer == null)
+             {
+                 Console.WriteLine("Ввод завершён");
+                 return;
+             }
+         }
+         while (string.Equals(answer, "д", StringComparison.OrdinalIgnoreCase));
+         Console.WriteLine("Работа завершена.");
+Код4:
+    static void Main(string[] args)
+    {
+        string answer;
+        do
+        {
+            decimal celsius;
+            bool valid;
+            do
+            {
+                Console.Write("Температура в °C (от -100 до 100): ");
+                string input = Console.ReadLine();
+                if (input == null)
+                {
+                    Console.WriteLine("Ввод завершён");
+                    return;
+                }
+                // Разрешаем дробные значения: 36,6 и т.п.
+                valid = decimal.TryParse(input, out celsius)
+                        && celsius >= -100m && celsius <= 100m;
+                if (!valid)
+                    Console.WriteLine("Нужно число от -100 до 100.");
+            }
+            while (!valid);
+            decimal fahrenheit = 1.8m * celsius + 32m;
+            Console.WriteLine($"{celsius} °C = {fahrenheit} °F");
+            Console.Write("Ещё? д/н: ");
+            answer = Console.ReadLine();
+            if (answer == null)
+            {
+                Console.WriteLine("Ввод завершён");
+                return;
+            }
+        }
+        while (string.Equals(answer, "д", StringComparison.OrdinalIgnoreCase));
+        Console.WriteLine("Калькулятор закрыт.");
+
